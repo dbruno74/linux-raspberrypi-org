@@ -37,6 +37,13 @@ parts:
       - CONFIG_SCSI_SAS_ATTRS=y
       - CONFIG_USB_STORAGE=y
       - CONFIG_USB_UAS=y
+      # configuring low latency
+      - CONFIG_HZ=1000
+      - CONFIG_HZ_1000=y
+      - '# CONFIG_HZ_250 is not set'
+      - CONFIG_IRQ_FORCED_THREADING_DEFAULT=y
+      - CONFIG_PREEMPT=y
+      - '# CONFIG_PREEMPT_VOLUNTARY is not set'
     override-pull: |
       snapcraftctl pull
       echo "setting version to $(git tag|sed 's/^Ubuntu-//')"
